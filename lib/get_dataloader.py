@@ -6,6 +6,7 @@ import torch.distributed as dist
 import lib.transform_cv2 as T
 from lib.sampler import RepeatedDistSampler
 from lib.cityscapes_cv2 import CityScapes
+from lib.synthetic_cv2 import Synthetic
 from lib.coco import CocoStuff
 
 
@@ -49,6 +50,7 @@ def get_data_loader(cfg, mode='train', distributed=True):
         shuffle = False
         drop_last = False
 
+    # This creates a dataset based on the name
     ds = eval(cfg.dataset)(cfg.im_root, annpath, trans_func=trans_func, mode=mode)
 
     if distributed:

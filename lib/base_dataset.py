@@ -51,6 +51,7 @@ class BaseDataset(Dataset):
 
     def get_image(self, impth, lbpth):
         img, label = cv2.imread(impth)[:, :, ::-1], cv2.imread(lbpth, 0)
+        # print(label[200:203,200:203])
         return img, label
 
     def __len__(self):
